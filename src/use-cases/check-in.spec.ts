@@ -95,7 +95,7 @@ describe('Register Use Case', () => {
 
     gymsRepository.items.push({
       id: 'gym-02',
-      title: 'Selfit',
+      title: 'Near Gym',
       phone: '',
       description: '',
       latitude: new Decimal(-5.0980079),
