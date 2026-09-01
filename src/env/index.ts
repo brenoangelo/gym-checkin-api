@@ -4,6 +4,7 @@ import { z } from 'zod'
 const envSchema = z.object({
   // biome-ignore lint/style/useNamingConvention: <explanation>
   NODE_ENV: z.enum(['dev', 'test', 'production']).default('dev'),
+  JWT_SECRET: z.string(),
   // biome-ignore lint/style/useNamingConvention: <explanation>
   PORT: z.coerce.number().default(3333),
 })

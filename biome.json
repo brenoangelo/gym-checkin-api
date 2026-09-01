@@ -51,7 +51,8 @@
       "!**/dist",
       "!tsup.config.ts",
       "!**/prisma/migrations",
-      "!prisma.config.ts"
+      "!prisma.config.ts",
+      "!src/@types"
     ]
   }
 }
