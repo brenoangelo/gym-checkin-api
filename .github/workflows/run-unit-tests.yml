@@ -15,12 +15,26 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+
       - name: Habilitar Corepack (pnpm)
         run: corepack enable
 
+      # --- CONFIGURAÇÃO DO CACHE ---
+      - name: Obter diretório do store do pnpm
+        id: pnpm-cache
+        run: echo "dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Configurar Cache do pnpm
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      # -----------------------------
+
       - name: Instalar dependências
-        run: pnpm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Rodar testes unitários
         run: pnpm test
-
