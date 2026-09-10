@@ -36,5 +36,10 @@ jobs:
       - name: Instalar dependências
         run: pnpm install --frozen-lockfile
 
+      # --- PASSO ADICIONADO PARA O PRISMA ---
+      - name: Gerar Prisma Client
+        run: pnpm prisma generate
+      # --------------------------------------
+
       - name: Rodar testes unitários
         run: pnpm test
