@@ -9,9 +9,9 @@
     "start": "node build/server.js",
     "build": "tsup src",
     "test": "vitest run --project unit",
-    "test:e2e": "dotenv -e .env.test -- vitest run --project e2e",
+    "test:e2e": "NODE_ENV=test vitest run --project e2e",
     "test:watch": "vitest --project unit",
-    "test:e2e:watch": "dotenv -e .env.test -- vitest --project e2e",
+    "test:e2e:watch": "NODE_ENV=test vitest --project e2e",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui"
   },

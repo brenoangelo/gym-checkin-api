@@ -12,10 +12,7 @@ const schema = url.searchParams.get('schema') ?? 'public'
 // (2º argumento) garante que as queries geradas pelo Prisma (ex: prisma.user.findMany())
 // sejam qualificadas com o schema correto, já que o Prisma usa `pgOptions.schema` para
 // montar o SQL e não lê o `search_path` da conexão para isso.
-const adapter = new PrismaPg(
-  { connectionString, options: `-c search_path=${schema}` },
-  { schema },
-)
+const adapter = new PrismaPg({ connectionString, options: `-c search_path=${schema}` }, { schema })
 
 export const prisma = new PrismaClient({
   adapter,
