@@ -8,13 +8,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 24
-          cache: 'pnpm'
+          node-version: 20
+      - name: Habilitar Corepack (pnpm)
+        run: corepack enable
 
-      - run: pnpm ci
+      - name: Instalar dependências
+        run: pnpm ci
 
-      - run: pnpm test
+      - name: Rodar testes unitários
+        run: pnpm test
 
